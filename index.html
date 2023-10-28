@@ -51,14 +51,14 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-lg-3 col-md-3 col-3 d-lg-none dl-block">
-                                <div class="mobail-menu">
+                               <!--  <div class="mobail-menu">
                                     <button type="button" class="navbar-toggler open-btn">
                                         <span class="sr-only">Toggle navigation</span>
                                         <span class="icon-bar first-angle"></span>
                                         <span class="icon-bar middle-angle"></span>
                                         <span class="icon-bar last-angle"></span>
                                     </button>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-lg-2 col-md-6 col-6">
                                 <div class="navbar-header">
@@ -87,11 +87,11 @@
                                         </div>
                                     </div>
                                     <div class="slide-sub-title wow fadeInUp" data-wow-duration="1500ms">
-                                        <h3>Angie & Alvaro</h3>
+                                         <h3 id="nombreH2"></h2>
                                     </div>
                                     <div data-swiper-parallax="400" class="slide-text wow fadeInUp"
                                         data-wow-duration="1600ms">
-                                        <p>dNos casamos el 09 de diciembre de 2023 </p>
+                                        <p>Nos casamos el 09 de diciembre de 2023 </p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -164,7 +164,7 @@
         <!-- end wpo-couple-section -->
 
         <!-- start wpo-video-section -->
-        <section class="wpo-video-section section-padding">
+       <!--  <section class="wpo-video-section section-padding">
             <h2 class="hidden">some</h2>
             <div class="container-fluid">
                 <div class="video-wrap">
@@ -173,7 +173,7 @@
                             class="fi flaticon-play"></i></a>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end wpo-video-section-->
 
         <!-- start wpo-story-section-s4 -->
@@ -544,47 +544,19 @@
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
     <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form-main2"); // Reemplaza "miFormulario" con el ID de tu formulario.
+       // Obtén la URL actual
+var url = new URL(window.location.href);
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const nombre = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      //const cantidad = document.getElementById("cantidad").value;
+// Obtén los parámetros de la URL
+var params = url.searchParams;
 
-      // Llamar a la función para enviar los datos a Google Sheets.
-      enviarDatosGoogleSheets(nombre, email);
-    });
+// Obtén valores específicos
+var nombre = params.get("nombre");
+var apellido = params.get("edad");
 
-    function enviarDatosGoogleSheets(nombre, email, cantidad) {
-        console.log(nombre,email)
-      // Aquí debes usar la API de Google Sheets para enviar los datos a la hoja de cálculo.
-      // Puedes utilizar la biblioteca gapi.js o la API de Fetch para realizar una solicitud POST a la API de Google Sheets.
+// Actualiza el contenido de las etiquetas h2
+document.getElementById("nombreH2").textContent = nombre + " " +apellido;
 
-      // Ejemplo con Fetch API:
-      // fetch('URL_DE_TU_API_DE_GOOGLE_SHEETS', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     // Añade aquí la autorización usando el token de acceso (cómo autenticar tu aplicación).
-      //   },
-      //   body: JSON.stringify({
-      //     nombre: nombre,
-      //     email: email,
-      //     cantidad: cantidad,
-      //   }),
-      // }).then(response => {
-      //   if (response.status === 200) {
-      //     // Éxito, los datos se enviaron a Google Sheets.
-      //     console.log('Datos enviados con éxito');
-      //   } else {
-      //     // Error en el envío de datos.
-      //     console.error('Error al enviar datos a Google Sheets');
-      //   }
-      // });
-    }
-  });
         
     </script>
 </body>
