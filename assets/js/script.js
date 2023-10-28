@@ -1036,63 +1036,45 @@
     -------------------------------------------*/
     if ($("#contact-form-main").length) {
         $("#contact-form-main").validate({
-            // rules: {
-            //     name: {
-            //         required: true,
-            //         minlength: 2
-            //     },
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
 
-            //     email: "required",
+                email: "required",
 
-            //     phone: "required",
+               
 
-            //     adress: "required",
+            },
 
-            //     guest: "required",
-
-            //     meal: "required",
-
-            //     date: "required",
-
-            //     what: "required",
-
-            //     service: "required",
-
-            // },
-
-            // messages: {
-            //     name: "Please enter your name",
-            //     email: "Please enter your email address",
-            //     phone: "Please enter your phone number",
-            //     adress: "Please enter your adress",
-            //     guest: "Please select your guest Number",
-            //     meal: "Please select your Meal Name",
-            //     date: "Please select your Date",
-            //     what: "Please select your Reason",
-            //     service: "Please select your Service"
-            // },
+            messages: {
+                name: "Please enter your name",
+                email: "Please enter your email address",
+            },
 
             submitHandler: function (form) {
-                $.ajax({
-                    type: "POST",
-                    url: "mail-contact.php",
-                    data: $(form).serialize(),
-                    success: function () {
-                        $("#loader").hide();
-                        $("#success").slideDown("slow");
-                        setTimeout(function () {
-                            $("#success").slideUp("slow");
-                        }, 3000);
-                        form.reset();
-                    },
-                    error: function () {
-                        $("#loader").hide();
-                        $("#error").slideDown("slow");
-                        setTimeout(function () {
-                            $("#error").slideUp("slow");
-                        }, 3000);
-                    }
-                });
+                console.log($(form).serialize())
+                // $.ajax({
+                //     type: "POST",
+                //     url: "mail-contact.php",
+                //     data: $(form).serialize(),
+                //     success: function () {
+                //         $("#loader").hide();
+                //         $("#success").slideDown("slow");
+                //         setTimeout(function () {
+                //             $("#success").slideUp("slow");
+                //         }, 3000);
+                //         form.reset();
+                //     },
+                //     error: function () {
+                //         $("#loader").hide();
+                //         $("#error").slideDown("slow");
+                //         setTimeout(function () {
+                //             $("#error").slideUp("slow");
+                //         }, 3000);
+                //     }
+                // });
                 return false; // required to block normal submit since you used ajax
             }
 
