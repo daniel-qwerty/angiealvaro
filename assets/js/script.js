@@ -1041,10 +1041,9 @@
                     required: true,
                     minlength: 2
                 },
+                attend,
 
-                email: "required",
-
-               
+              
 
             },
 

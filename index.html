@@ -337,14 +337,10 @@
                                         <h2>Confirma tu asistencia</h2>
                                         <p>El mejor regalo que podrías hacernos</p>
                                     </div>
-                                    <form method="post" class="contact-validation-active" id="contact-form-main">
+                                    <form  class="contact-validation-active" id="contact-form-main2">
                                         <div>
                                             <input type="text" class="form-control" name="name" id="name"
-                                                placeholder="Nombre">
-                                        </div>
-                                        <div>
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                placeholder="Email">
+                                                placeholder="Nombre" readonly="true">
                                         </div>
                                         <div class="radio-buttons">
                                             <p>
@@ -359,7 +355,7 @@
                                        
                                         
                                         <div class="submit-area">
-                                            <button type="submit" class="theme-btn">Enviar Respuesta</button>
+                                            <button type="button" class="theme-btn" id="enviarWhatsapp">Enviar Respuesta</button>
                                             <div id="c-loader">
                                                 <i class="ti-reload"></i>
                                             </div>
@@ -541,19 +537,44 @@
 
     <script type="text/javascript">
        // Obtén la URL actual
-var url = new URL(window.location.href);
+        var url = new URL(window.location.href);
 
-// Obtén los parámetros de la URL
-var params = url.searchParams;
+        // Obtén los parámetros de la URL
+        var params = url.searchParams;
 
-// Obtén valores específicos
-var name = params.get("name");
-var lastname = params.get("lastname");
+        // Obtén valores específicos
+        var name = params.get("name");
+        var lastname = params.get("lastname");
 
-// Actualiza el contenido de las etiquetas h2
-document.getElementById("nombreH2").textContent = name + " " +lastname;
+        // Actualiza el contenido de las etiquetas h2
+        document.getElementById("nombreH2").textContent = name;
+        document.getElementById("name").value = name;
 
-        
+    </script>
+    <script type="text/javascript">
+        document.getElementById("enviarWhatsapp").addEventListener("click", function() {
+            var nombre = document.getElementById("name").value;
+            var attend = document.getElementById("attend").checked;
+            var codigo = params.get("cod");
+            var mensaje = ""
+
+            if(attend)
+                mensaje = "¡Estoy emocionado/a de asistir a tu boda! Será un honor compartir este día tan especial contigo. ¡Nos vemos en la boda"
+            else
+                mensaje = "Lamento no poder asistir a su boda. Mis mejores deseos para un día maravilloso."
+
+
+            console.log(nombre, mensaje);
+
+            // Reemplaza espacios y caracteres especiales en el mensaje
+            mensaje = encodeURIComponent(mensaje);
+
+            // Crea el enlace de WhatsApp con los datos del formulario
+            var url = "https://api.whatsapp.com/send?phone=59175666177&text=Invitado/a: " + nombre + "%0ACod: " + codigo + "%0A%0A" + mensaje
+
+            // Abre WhatsApp en una nueva ventana o pestaña
+            window.open(url, "_blank");
+        });
     </script>
 </body>
 
