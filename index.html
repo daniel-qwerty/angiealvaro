@@ -551,11 +551,11 @@ var url = new URL(window.location.href);
 var params = url.searchParams;
 
 // Obtén valores específicos
-var nombre = params.get("nombre");
-var apellido = params.get("edad");
+var name = params.get("name");
+var latname = params.get("latname");
 
 // Actualiza el contenido de las etiquetas h2
-document.getElementById("nombreH2").textContent = nombre + " " +apellido;
+document.getElementById("nombreH2").textContent = name + " " +latname;
 
         
     </script>
