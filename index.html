@@ -353,7 +353,6 @@
                                                 <label for="not">Lo siento, no puedo ir</label>
                                             </p>
                                         </div>
-                                       
                                         
                                         <div class="submit-area">
                                             <button type="button" class="theme-btn" id="enviarWhatsapp">Enviar Respuesta</button>
@@ -544,7 +543,7 @@
         var params = url.searchParams;
 
         // Obtén valores específicos
-        var name = params.get("name");
+        var name = params.get("name").replace(/-/g, " ");
         var lastname = params.get("lastname");
 
         // Actualiza el contenido de las etiquetas h2
